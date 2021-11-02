@@ -1,0 +1,8 @@
+<nav th:fragment="childrens ( args )">
+    <ul th:each="child : ${args}">
+        <a th:href="@{/admin/categories/edit/{id} (id=${child.id})}">[[${child.libelle}]]</a> <a th:href="@{/admin/categories/add/{id} (id=${child.id})}"><i class="fa fa-plus"></i></a> <a th:href="@{/admin/categories/{id} (id=${child.id})}"><i class="fa fa-trash"></i></a>
+        <li th:replace="~{fragments/childrens :: childrens(args = ${ child.childrens })}">
+
+        </li>
+    </ul>
+</nav>

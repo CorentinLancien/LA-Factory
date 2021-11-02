@@ -1,0 +1,9 @@
+<nav th:fragment="categories ( args )">
+    <a th:href="@{/admin/categories/add/0}">Ajouter une categorie primaire <i class="fa fa-plus"></i></a>
+    <ul th:each="categorie : ${args}"  th:if="${categorie.isParent == 1}">
+        <a th:href="@{/admin/categories/edit/{id} (id=${categorie.id})}">[[${categorie.libelle}]]</a> <a th:href="@{/admin/categories/add/{id} (id=${categorie.id})}"><i class="fa fa-plus"></i></a> <a th:href="@{/admin/categories/{id} (id=${categorie.id})}"><i class="fa fa-trash"></i></a>
+        <li th:replace="~{fragments/childrens :: childrens(args = ${ categorie.childrens })}">
+
+        </li>
+    </ul> 
+</nav>

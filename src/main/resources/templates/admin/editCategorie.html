@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <form method="POST">
+        <label for="libelle">Libelle</label>
+        <span th:if="${categorie!= null } ">
+            <input type="text" name="libelle"  th:value="${categorie.libelle } ">
+        </span>
+        <span th:unless="${categorie!= null } ">
+            <input type="text" name="libelle">
+        </span>
+        <input type="submit" name="add">
+    </form>
+
+    <div th:if="${origamis != null}">
+        <h1>Origamis pour la categorie [[${categorie.libelle}]]</h1>
+        <a th:href="@{/admin/origami/{id} (id=${categorie.id})}">Créer un nouvel origami <i class="fa fa-plus"></i></a>
+        <div th:each="origami : ${origamis}">
+            <a href="">[[${origami.name}]]</a>
+        </div>       
+    </div>
+
+</body>
+</html>
