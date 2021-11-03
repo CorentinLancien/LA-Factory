@@ -34,7 +34,7 @@ public class Origami {
 
     //Time to make the origami
     @Column(name = "ori_time")
-    private Time time;
+    private String time;
     
     //Level of origami
     @Column(name = "ori_level")

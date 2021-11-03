@@ -17,11 +17,12 @@
         <input type="submit" name="add">
     </form>
 
+
     <div th:if="${origamis != null}">
         <h1>Origamis pour la categorie [[${categorie.libelle}]]</h1>
         <a th:href="@{/admin/origami/{id} (id=${categorie.id})}">Créer un nouvel origami <i class="fa fa-plus"></i></a>
         <div th:each="origami : ${origamis}">
-            <a href="">[[${origami.name}]]</a>
+            <a th:href="@{/admin/origami/{id}/{origamiId} (id=${categorie.id}, origamiId=${origami.id})}">[[${origami.name}]]</a>
         </div>       
     </div>
 

@@ -24,7 +24,10 @@ public class Etape {
     //id for step
     private int id;
 
-    
+    @Column(name = "etape_title")
+    //Title of the step
+    private String title;
+
     @Column(name = "etape_desc")
     //Description of the step
     private String description;

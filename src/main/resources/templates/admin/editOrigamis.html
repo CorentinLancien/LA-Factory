@@ -7,15 +7,62 @@
 </head>
 <body>
     <form method="POST">
-        <label for="libelle">Libelle</label>
-        <span th:if="${categorie!= null } ">
-            <input type="text" name="libelle"  th:value="${categorie.libelle } ">
+        <span th:if="${origami!= null } ">
+            <label for="name">Nom</label>
+            <input type="text" name="name"  th:value="${origami.name } ">
+            
+            <label for="time">Temps</label>
+            <input type="time" name="time" th:value="${origami.time }">
+
+            <label for="level">Niveau de difficulté</label>
+
+            <select name="level">
+                <option value="">--Choisissez une option--</option>
+                <option value="novice">Novice</option>
+                <option value="normal">Normal</option>
+                <option value="avancé">Avancé</option>
+                <option value="expert">Expert</option>
+            </select>
+
+            <label for="sheet">Nombre de feuilles</label>
+            <input type="text" name="sheet" th:value="${origami.sheet } ">
         </span>
-        <span th:unless="${categorie!= null } ">
-            <input type="text" name="libelle">
+        <input type="submit" name="add">
+            
+        </span>
+        <span th:unless="${origami!= null } ">
+            <label for="name">Nom</label>
+            <input type="text" name="name">
+
+            <label for="time">Temps</label>
+            <input type="time" name="time">
+
+            <label for="level">Niveau de difficulté</label>
+
+            <select name="level">
+                <option value="">--Choisissez une option--</option>
+                <option value="novice">Novice</option>
+                <option value="normal">Normal</option>
+                <option value="avancé">Avancé</option>
+                <option value="expert">Expert</option>
+            </select>
+
+            <label for="sheet">Nombre de feuilles</label>
+            <input type="text" name="sheet">
         </span>
         <input type="submit" name="add">
     </form>
+
+    <div th:if="${etapes != null}">
+        <h1> Etapes pour l'origami [[${origami.name}]]</h1>
+        <a href="">Créer une nouvelle étape pour l'origami <i class="fa fa-plus"></i></a>
+        <div th:each="etape : ${etapes}">
+            <a href="">[[${etape.title}]]</a>
+            <div>
+                [[${etape.description}]]
+            </div>
+        </div>       
+    </div>
 </body>
 </body>
 </html>
